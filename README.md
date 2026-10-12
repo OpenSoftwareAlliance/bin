@@ -1,124 +1,64 @@
-<!-- osa:header:start -->
+<div align="center">
+
 # OSA Bin
 
-Zero-knowledge encrypted pastebin. Open alternative to **Google Keep (secure notes)**, part of the [Open Software Alliance](https://github.com/OpenSoftwareAlliance) suite.
+**Zero-knowledge encrypted pastebin.**
 
-| | |
-|---|---|
-| Upstream | [PrivateBin](https://github.com/PrivateBin/PrivateBin), kept in sync with this repository |
-| License | zlib/libpng and others (see LICENSE.md) |
+Open source alternative to **Google Keep (secure notes)**. Part of the [Open Software Alliance](https://github.com/OpenSoftwareAlliance) suite.
 
-Credit for the original work goes to the PrivateBin authors. Everything below this header is the upstream README.
+</div>
 
 ---
-<!-- osa:header:end -->
-# [![PrivateBin](https://cdn.rawgit.com/PrivateBin/assets/master/images/preview/logoSmall.png)](https://privatebin.info/)
 
-*Current version: 1.4.0*
+## Features
 
-**PrivateBin** is a minimalist, open source online
-[pastebin](https://en.wikipedia.org/wiki/Pastebin)
-where the server has zero knowledge of pasted data.
+- Zero-knowledge pastes encrypted in the browser (AES-256-GCM)
+- Expiration, burn-after-reading and passwords
+- Discussions, file attachments and syntax highlighting
+- QR codes and multiple storage backends
 
-Data is encrypted and decrypted in the browser using 256bit AES in
-[Galois Counter mode](https://en.wikipedia.org/wiki/Galois/Counter_Mode).
+## Tech stack
 
-This is a fork of ZeroBin, originally developed by
-[Sébastien Sauvage](https://github.com/sebsauvage/ZeroBin). PrivateBin was
-refactored to allow easier and cleaner extensions and has many additional
-features. It is, however, still fully compatible to the original ZeroBin 0.19
-data storage scheme. Therefore, such installations can be upgraded to PrivateBin
-without losing any data.
+- **Current:** PHP + JavaScript, filesystem/SQL/S3/GCS storage
+- **Target:** Next.js + TypeScript on Cloudflare Workers (see [migration research](https://github.com/OpenSoftwareAlliance/bin/issues/6))
 
-## What PrivateBin provides
+## Roadmap
 
-+ As a server administrator you don't have to worry if your users post content
-  that is considered illegal in your country. You have plausible deniability of
-  any of the pastes content. If requested or enforced, you can delete any paste
-  from your system.
+- [Open source landscape research](https://github.com/OpenSoftwareAlliance/bin/issues/5)
+- [Migration research: React/Next.js + TypeScript on Cloudflare Workers](https://github.com/OpenSoftwareAlliance/bin/issues/6)
+- [All issues](https://github.com/OpenSoftwareAlliance/bin/issues)
 
-+ Pastebin-like system to store text documents, code samples, etc.
+## Self-hosting
 
-+ Encryption of data sent to server.
+Installation and configuration follow the upstream project for now: see the [PrivateBin documentation](https://github.com/PrivateBin/PrivateBin#readme).
 
-+ Possibility to set a password which is required to read the paste. It further
-  protects a paste and prevents people stumbling upon your paste's link
-  from being able to read it without the password.
+## The OSA suite
 
-## What it doesn't provide
+| Product | What it does | Alternative to |
+|---|---|---|
+| [OSA Pad](https://github.com/OpenSoftwareAlliance/pad) | Real-time collaborative document editor. | Google Docs |
+| [OSA Sheet](https://github.com/OpenSoftwareAlliance/sheet) | Online collaborative spreadsheet. | Google Sheets |
+| [OSA Cal](https://github.com/OpenSoftwareAlliance/cal) | Scheduling and booking pages. | Google Calendar (appointment schedules) |
+| [OSA Mail](https://github.com/OpenSoftwareAlliance/mail) | Email forwarding and hosting for custom domains. | Gmail |
+| [OSA Meet](https://github.com/OpenSoftwareAlliance/meet) | Secure peer-to-peer video meetings. | Google Meet |
+| [OSA Draw](https://github.com/OpenSoftwareAlliance/draw) | Infinite canvas whiteboard. | Google Drawings / Jamboard |
+| [OSA Drop](https://github.com/OpenSoftwareAlliance/drop) | Local file sharing in the browser. | Quick Share |
+| [OSA Share](https://github.com/OpenSoftwareAlliance/share) | Simple temporary file hosting. | Google Drive (file links) |
+| [OSA Share Admin](https://github.com/OpenSoftwareAlliance/share-admin) | Moderation panel for OSA Share. | Google Drive admin |
+| [OSA Bin](https://github.com/OpenSoftwareAlliance/bin) | Zero-knowledge encrypted pastebin. | Google Keep (secure notes) |
+| [OSA Snip](https://github.com/OpenSoftwareAlliance/snip) | Self-hosted code snippets and gists. | Google Keep (snippets) |
+| [OSA Short](https://github.com/OpenSoftwareAlliance/short) | URL shortener with analytics. | goo.gl |
+| [OSA Alias](https://github.com/OpenSoftwareAlliance/alias) | DNS-based domain redirection. | Google Domains forwarding |
+| [OSA Page](https://github.com/OpenSoftwareAlliance/page) | Link-in-bio pages. | Google Sites |
+| [OSA Feedback](https://github.com/OpenSoftwareAlliance/feedback) | Feedback boards and public roadmaps. | Google Forms (product feedback) |
+| [OSA Jam](https://github.com/OpenSoftwareAlliance/jam) | Live audio rooms. | Google Meet (audio) |
+| [OSA Micro](https://github.com/OpenSoftwareAlliance/micro) | Ready-to-use micro service APIs. | Google Cloud APIs |
+| [OSA Username](https://github.com/OpenSoftwareAlliance/username) | Check username availability on 100+ sites. | - |
+| [OSA Desktop](https://github.com/OpenSoftwareAlliance/osa-desktop) | Dynamic Island and menu bar toolkit for macOS. | - |
+| [OSA Status](https://github.com/OpenSoftwareAlliance/status) | Uptime monitor and status page for the OSA services. | - |
 
-- As a user you have to trust the server administrator not to inject any
-  malicious code. For security, a PrivateBin installation *has to be used over*
-  *HTTPS*! Otherwise you would also have to trust your internet provider, and
-  any jurisdiction the traffic passes through. Additionally the instance should
-  be secured by
-  [HSTS](https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security). It can
-  use traditional certificate authorities and/or use a
-  [DNSSEC](https://en.wikipedia.org/wiki/Domain_Name_System_Security_Extensions)
-  protected
-  [DANE](https://en.wikipedia.org/wiki/DNS-based_Authentication_of_Named_Entities)
-  record.
+## License and credits
 
-- The "key" used to encrypt the paste is part of the URL. If you publicly post
-  the URL of a paste that is not password-protected, anyone can read it.
-  Use a password if you want your paste to remain private. In that case, make
-  sure to use a strong password and share it privately and end-to-end-encrypted.
+OSA Bin is based on [PrivateBin](https://github.com/PrivateBin/PrivateBin). Credit for the original work goes to its authors.
 
-- A server admin can be forced to hand over access logs to the authorities.
-  PrivateBin encrypts your text and the discussion contents, but who accessed a
-  paste (first) might still be disclosed via access logs.
-
-- In case of a server breach your data is secure as it is only stored encrypted
-  on the server. However, the server could be absused or the server admin could
-  be legally forced into sending malicious code to their users, which logs
-  the decryption key and sends it to a server when a user accesses a paste.
-  Therefore, do not access any PrivateBin instance if you think it has been
-  compromised. As long as no user accesses this instance with a previously
-  generated URL, the content can't be decrypted.
-
-## Options
-
-Some features are optional and can be enabled or disabled in the [configuration
-file](https://github.com/PrivateBin/PrivateBin/wiki/Configuration):
-
-* Password protection
-
-* Discussions, anonymous or with nicknames and IP based identicons or vizhashes
-
-* Expiration times, including a "forever" and "burn after reading" option
-
-* Markdown format support for HTML formatted pastes, including preview function
-
-* Syntax highlighting for source code using prettify.js, including 4 prettify
-  themes
-
-* File upload support, image, media and PDF preview (disabled by default, size
-  limit adjustable)
-
-* Templates: By default there are bootstrap CSS, darkstrap and "classic ZeroBin"
-  to choose from and it is easy to adapt these to your own websites layout or
-  create your own.
-
-* Translation system and automatic browser language detection (if enabled in
-  browser)
-
-* Language selection (disabled by default, as it uses a session cookie)
-
-* QR code for paste URLs, to easily transfer them over to mobile devices
-
-## Further resources
-
-* [FAQ](https://github.com/PrivateBin/PrivateBin/wiki/FAQ)
-
-* [Installation guide](https://github.com/PrivateBin/PrivateBin/blob/master/INSTALL.md#installation)
-
-* [Configuration guide](https://github.com/PrivateBin/PrivateBin/wiki/Configuration)
-
-* [Templates](https://github.com/PrivateBin/PrivateBin/wiki/Templates)
-
-* [Translation guide](https://github.com/PrivateBin/PrivateBin/wiki/Translation)
-
-* [Developer guide](https://github.com/PrivateBin/PrivateBin/wiki/Development)
-
-Run into any issues? Have ideas for further developments? Please
-[report](https://github.com/PrivateBin/PrivateBin/issues) them!
+License: zlib/libpng and others (see LICENSE.md). See the [LICENSE](LICENSE) file in this repository.
