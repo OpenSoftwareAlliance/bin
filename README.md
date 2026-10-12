@@ -1,3 +1,17 @@
+<!-- osa:header:start -->
+# OSA Bin
+
+Zero-knowledge encrypted pastebin. Open alternative to **Google Keep (secure notes)**, part of the [Open Software Alliance](https://github.com/OpenSoftwareAlliance) suite.
+
+| | |
+|---|---|
+| Upstream | [PrivateBin](https://github.com/PrivateBin/PrivateBin), kept in sync with this repository |
+| License | zlib/libpng and others (see LICENSE.md) |
+
+Credit for the original work goes to the PrivateBin authors. Everything below this header is the upstream README.
+
+---
+<!-- osa:header:end -->
 # [![PrivateBin](https://cdn.rawgit.com/PrivateBin/assets/master/images/preview/logoSmall.png)](https://privatebin.info/)
 
 *Current version: 1.4.0*
